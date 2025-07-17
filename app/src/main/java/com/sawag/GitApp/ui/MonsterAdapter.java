@@ -1,14 +1,21 @@
 package com.sawag.gitapp.ui;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.sawag.gitapp.R;
 import com.sawag.gitapp.model.Monster;
 
@@ -43,8 +50,24 @@ public class MonsterAdapter extends RecyclerView.Adapter<MonsterAdapter.MonsterV
 
         Glide.with(context)
                 .load(currentMonster.getImageUrl())
-                .placeholder(R.drawable.ic_launcher_background) // Optional placeholder
-                .error(R.drawable.ic_launcher_foreground) // Optional error image
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_foreground)
+                .listener(new RequestListener<Drawable>() { // RequestListenerの実装
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        // 画像の読み込みに失敗した場合の処理
+                        Log.e("GlideError", "Load failed for " + model + ": " + (e != null ? e.getMessage() : "Unknown error"), e);
+                        // e.logRootCauses("GlideError"); // GlideExceptionの詳細な原因をログに出力 [2]
+                        return false; // falseを返すと .error() で指定したプレースホルダーが表示される
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        // 画像の読み込みに成功した場合の処理
+                        Log.d("GlideSuccess", "Resource ready for " + model);
+                        return false; // falseを返すと通常通り画像が表示される
+                    }
+                })
                 .into(holder.imageViewMonster);
     }
 
