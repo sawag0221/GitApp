@@ -3,12 +3,18 @@
     "id": 1,
     "name": "早苗",
     "hp": 10,
-    "image_url": "https://sawag0221.github.io/GitApp/images/monster_image.png"
+    "image_url": "https://sawag0221.github.io/GitApp/images/sanae_image.png"
   },
   {
     "id": 2,
     "name": "さとり",
     "hp": 10,
-    "image_url": "https://sawag0221.github.io/GitApp/images/monster_image.png"
+    "image_url": "https://sawag0221.github.io/GitApp/images/satori_image.png"
+  },
+  {
+    "id": 3,
+    "name": "大知",
+    "hp": 10,
+    "image_url": "https://sawag0221.github.io/GitApp/images/daichi_image.png"
   }
 ]
