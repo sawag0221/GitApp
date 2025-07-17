@@ -4,5 +4,11 @@
     "name": "早苗",
     "hp": 10,
     "image_url": "https://sawag0221.github.io/GitApp/images/monster_image.png"
+  },
+  {
+    "id": 2,
+    "name": "さとり",
+    "hp": 10,
+    "image_url": "https://sawag0221.github.io/GitApp/images/monster_image.png"
   }
 ]
