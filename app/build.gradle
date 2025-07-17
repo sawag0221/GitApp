@@ -1,0 +1,61 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.sawag.gitapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.sawag.gitapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        // For Java 8+ API desugaring
+        coreLibraryDesugaringEnabled true
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    // Retrofit for network requests
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    // Gson converter for Retrofit (JSON to Java POJO)
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    // OkHttp (usually included with Retrofit)
+    implementation "com.squareup.okhttp3:okhttp:4.10.0" // バージョンは最新を確認
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0" // For logging (optional)
+
+    // Glide for image loading
+    implementation "com.github.bumptech.glide:glide:4.15.1" // バージョンは最新を確認
+    annotationProcessor "com.github.bumptech.glide:compiler:4.15.1"
+
+    // ViewModel and LiveData for MVVM
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.9.2"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.9.2"
+
+    // Java 8+ API desugaring (if not already enabled, for using some modern APIs)
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5" // バージョンは最新を確認
+}

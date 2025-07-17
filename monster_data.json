@@ -1,6 +1,8 @@
-{
-  "id": 1,
-  "name": "早苗",
-  "hp": 10,
-  "image_url": "images/monster_image.png"
-}
+[
+  {
+    "id": 1,
+    "name": "早苗",
+    "hp": 10,
+    "image_url": "images/monster_image.png"
+  }
+]
